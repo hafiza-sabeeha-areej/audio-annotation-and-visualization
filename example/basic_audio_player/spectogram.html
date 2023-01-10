@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>wavesurfer.js | Spectrogram plugin</title>
+
+        <link href="data:image/gif;" rel="icon" type="image/x-icon" />
+
+        <!-- Bootstrap -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../css/style.css" />
+        <!-- <link rel="stylesheet" href="../css/ribbon.css" /> -->
+
+        <!-- wavesurfer.js -->
+        <script src="../../dist/wavesurfer.js"></script>
+        <script src="../../dist/plugin/wavesurfer.timeline.js"></script>
+        <script src="../../dist/plugin/wavesurfer.regions.js"></script>
+
+        <!-- spectrogram format renderer -->
+        <script src="../../dist/plugin/wavesurfer.spectrogram.js"></script>
+
+        <!-- App -->
+        <script src="spect.js"></script>
+        <script src="../trivia.js"></script>
+        <script src="soundtouch.js"></script>
+        
+        <!-- highlight.js for syntax highlighting in this example -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    </head>
+
+    <body itemscope itemtype="http://schema.org/WebApplication">
+        <div class="container">
+            <div class="header">
+                
+                    <ul class="nav nav-pills pull-right">
+                        <li><a href="http://localhost:8080/example/basic_audio_player/"><i class="glyphicon glyphicon-home"></i></a></li>
+                    </ul>
+                    <br>
+                    <br>
+                    <br>
+                <noindex>
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="?fill">Fill</a></li>
+                    <li><a href="?scroll">Scroll</a></li>
+                </ul>
+                </noindex>
+
+                <h1 itemprop="name">Spectrogram</h1>
+            </div>
+
+            <div id="demo">
+                
+                <div id="waveform" style="width:900px">
+                    <div class="progress progress-striped active" id="progress-bar">
+                        <div class="progress-bar progress-bar-info"></div>
+                    </div>
+
+                    <!-- Here be waveform -->
+                </div>
+                
+                <div id="wave-spectrogram" style="width:900px"></div>
+                <div id="timeline"></div>
+
+                <div class="controls">
+                    <button class="btn btn-primary" data-action="play">
+                        <i class="glyphicon glyphicon-play"></i>
+                        Play
+                        /
+                        <i class="glyphicon glyphicon-pause" data-action="pause"></i>
+                        Pause
+                    </button>
+                         <button id="toggle" class="btn btn-primary" onclick="wavesurfer.toggleMute()">Mute/Unmute</button>
+                    
+                        <button id="setMuteOffBtn" class="btn btn-primary" onclick="wavesurfer.skipForward()">
+                            Move Forward
+                        </button>
+                        <button id="setMuteOffBtn" class="btn btn-primary" onclick="wavesurfer.skipBackward()">
+                            Move Backward
+                        </button>
+                        <button id="stopButton" class="btn btn-danger" onclick="wavesurfer.stop()">
+                            Stop
+                        </button>
+                        <div class="controls">
+
+                            <select id="myList">
+                                <option value="0"> ---Choose speed--- </option>
+                                <option value="1">0.5</option>
+                                <option value="1">1</option>
+                                <option value="1.5">1.5</option>
+                                <option value="2">2</option>
+                                <option value="2.5">2.5</option>
+                                <option value="3">3</option>
+            
+                            </select>
+                           </div>
+                       
+
+                </div>
+                <div class="controls">
+                    <span>
+                        <input type=button class="btn btn-primary" onClick="parent.location='spectogram.html'"
+                            value='spectogram'>
+                    </span>
+                    <span>
+                        <input type=button class="btn btn-primary" onClick="parent.location='zoom/index.html'"
+                            value='zoom Spectrogram'>
+                    </span>
+                    <span>
+                        <input type=button class="btn btn-primary" onClick="parent.location='annotation.html'"
+                            value='Annotate'>
+                    </span>
+                </div>
+            </div>
+            <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+            <script>
+            $(document).ready(function(){
+            $('#myList:selected').val() 
+           
+            $('#myList').on('change', function() {
+                let speed = parseFloat($(this).val());
+                wavesurfer.setPlaybackRate(speed)
+             });
+            });
+        
+         </script>
+
+       
+    </body>
+</html>

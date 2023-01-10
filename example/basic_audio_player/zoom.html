@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <title>wavesurfer.js | Zoom Example</title>
+
+        <link href="data:image/gif;" rel="icon" type="image/x-icon" />
+
+        <!-- Bootstrap -->
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+        <link rel="stylesheet" href="../css/style.css" />
+        <link rel="stylesheet" href="../css/ribbon.css" />
+        <link rel="screenshot" itemprop="screenshot" href="https://katspaugh.github.io/wavesurfer.js/example/screenshot.png" />
+
+        <!-- wavesurfer.js -->
+        <script src="../../dist/wavesurfer.js"></script>
+        <script src="../../dist/plugin/wavesurfer.timeline.js"></script>
+        <script src="../../dist/plugin/wavesurfer.regions.js"></script>
+
+        <!-- Demo -->
+        <script src="zoom.js"></script>
+        
+        <!-- highlight.js for syntax highlighting in this example -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script>
+    </head>
+
+    <body itemscope itemtype="http://schema.org/WebApplication">
+        <div class="container">
+            <div class="header">
+                <ul class="nav nav-pills pull-right">
+                    <li><a href="http://localhost:8080/example/basic_audio_player/"><i class="glyphicon glyphicon-home"></i></a></li>
+                </ul>
+
+                <h1 itemprop="name">Zooming Feature Example</h1>
+            </div>
+
+            <div id="demo">
+                <div id="waveform">
+                    <!-- Here be the waveform -->
+                </div>
+
+                <div id="timeline"></div>
+
+                <div class="controls">
+                    <div class="row">
+                        <div class="col-sm-7">
+                            <button class="btn btn-primary" data-action="play">
+                                <i class="glyphicon glyphicon-play"></i>
+                                Play
+                                /
+                                <i class="glyphicon glyphicon-pause"></i>
+                                Pause
+                            </button>
+                        </div>
+
+                        <div class="col-sm-1">
+                            <i class="glyphicon glyphicon-zoom-in"></i>
+                        </div>
+
+                        <div class="col-sm-3">
+                          <input data-action="zoom" type="range" min="1" max="200" value="0" style="width: 100%" />
+                        </div>
+
+                        <div class="col-sm-1">
+                            <i class="glyphicon glyphicon-zoom-out"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="controls">
+                    <span>
+                        <input type=button class="btn btn-primary" onClick="parent.location='spectogram.html'"
+                            value='spectogram'>
+                    </span>
+                    <span>
+                        <input type=button class="btn btn-primary" onClick="parent.location='zoom.html'"
+                            value='zoom Waveform'>
+                    </span>
+                    <span>
+                        <input type=button class="btn btn-primary" onClick="parent.location='annotation.html'"
+                            value='Annotate'>
+                    </span>
+                </div>
+            </div>
+         
+            
+    </body>
+</html>

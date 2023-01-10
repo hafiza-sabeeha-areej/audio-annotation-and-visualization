@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <!-- Bootstrap -->
+
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous">
+    </script> 
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <!-- Bootstrap -->
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/ribbon.css" />
+    <link rel="screenshot" itemprop="screenshot"
+        href="https://katspaugh.github.io/wavesurfer.js/example/screenshot.png" />
+
+    <!-- wavesurfer.js -->
+    <script src="../../dist/wavesurfer.js"></script>
+    <!-- spectrogram format renderer -->
+    <script src="../../dist/plugin/wavesurfer.spectrogram.js"></script>
+
+    <!-- App -->
+    <script src="app.js"></script>
+    <script src="../trivia.js"></script>
+    <script src="spect.js"></script>
+    <script src="soundtouch.js"></script>
+
+    <!-- highlight.js for syntax highlighting in this example -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/styles/default.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.2.0/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+
+    </script>
+
+</head>
+
+
+
+<body itemscope itemtype="http://schema.org/WebApplication">
+
+    <div class="container">
+
+        <h1>Audio Player Waveform</h1>
+        <!-- <input type="file" accept="audio/*" @change="handleFileUpload( $event )"/>
+        <audio id="audio-preview" controls v-show="file != ''"/> -->
+      
+        
+        <div id="demo">
+            <div id="wave"></div>
+
+            <div class="controls">
+                <button id="playBtn" class="btn btn-success">Play / Pause</button>
+                <button id="toggle" class="btn btn-primary">Mute/Unmute</button>
+                <button id="skipBack" class="btn btn-success">Move backward</button>
+                <button id="skipForward" class="btn btn-success">Move Forward</button>
+                <button id="stopBtn" class="btn btn-danger">Stop</button>
+            </div>
+            <div class="controls">
+
+                <select id="myList">
+                    <option value="0"> ---Choose speed--- </option>
+                    <option value="0.5">0.5</option>
+                    <option value="1">1</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2">2</option>
+                    <option value="1.5">2.5</option>
+                    <option value="3">3</option>
+
+                </select>
+            </div>
+
+            <div class="controls">
+                <span>
+                    <input type=button class="btn btn-primary" onClick="parent.location='spectogram.html'"
+                        value='spectogram'>
+                </span>
+                <span>
+                    <input type=button class="btn btn-primary" onClick="parent.location='zoom.html'"
+                        value='zoom-Spectogram'>
+                </span>
+                <span>
+                    <input type=button class="btn btn-primary" onClick="parent.location='zoom.html'"
+                        value='zoom Waveform'>
+                </span>
+                <span>
+                    <input type=button class="btn btn-primary" onClick="parent.location='annotation.html'"
+                        value='Annotate'>
+                </span>
+            </div>
+
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.1/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myList:selected').val()
+
+            $('#myList').on('change', function () {
+
+                let speed = parseFloat($(this).val());
+                wavesurfer.setPlaybackRate(speed)
+
+            });
+        })
+
+    </script>
+</body>
+
+</html>
